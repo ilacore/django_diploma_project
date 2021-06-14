@@ -1,0 +1,28 @@
+{% extends "starter_template.html" %}
+
+{% block content %}
+  <div class="container">
+  <h2 style="color:white">Користувач {{ post.author }} написав:</h2>
+
+  <p style="background-color:white;"><strong>{{ post.text }}</strong></p>
+  {% if user.is_authenticated %}
+  <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+  {% endif %}
+  {% if replies %}
+  <table>
+    <tr><th>Коментар</th><th>Автор</th><th>Дата публікування</th><th>Відповідей:</th></tr>
+    {% for reply, reply_count in replies %}
+      <tr>
+        <td><a href="{{ reply.get_absolute_url }}">{{ reply.display_text }}</a></td><td>{{ reply.author }}</td><td>{{ reply.created_at }}</td><td>{{ reply_count }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+    <p>No replies.</p>
+  {% endif %}
+  </div>
+{% endblock %}

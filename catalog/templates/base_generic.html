@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>Multimedia Lab</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                {% block sidebar %}
+                    <ul class="sidebar-nav">
+                        <li><a href="{% url 'index' %}"><img src="{% static 'logo.jpg' %}"></a></li>
+                        <li class="nav-item {% if url_name == 'index' %}active{% endif %}"><a href="{% url 'index' %}" class="nav-link" >Головна</a></li>
+                        <li class="nav-item {% if url_name == 'about' %}active{% endif %}"><a href="#" class="nav-link" >Про нас</a></li>
+                        <li class="nav-item {% if url_name == 'contacts' %}active{% endif %}"><a href="#" class="nav-link" >Контакти</a></li>
+                        <li class="nav-item {% if url_name == 'gallery' %}active{% endif %}"><a href="#" class="nav-link" >Галерея</a></li>
+                        <li class="nav-item {% if url_name == 'posts' %}active{% endif %}"><a href="{% url 'posts' %}" class="nav-link" >Форум</a></li>
+                        <li class="nav-item {% if url_name == 'lab live' %}active{% endif %}"><a href="{% url 'lab live' %}" class="nav-link" >Lab-Live</a></li>
+                    </ul>
+                    <hr>
+                    <nav class="mb-3">
+                        {% if user.is_authenticated %}
+                            <form action="{% url 'accounts:logout' %}" method="post">
+                                {% csrf_token %}
+                                <button class="btn btn-primary btn-sm" type="submit">Log Out</button>
+                            </form>
+                        {% else %}
+                        <a href="{% url 'accounts:login' %}"><button class="btn btn-primary btn-sm">Login</button></a> | <a href="{% url 'accounts:signup' %}"><button class="btn btn-primary btn-sm">Register</button></a>
+                        {% endif %}
+                    </nav>
+                    <hr>
+                    <p>u s e f u l _ l i n k s</p>
+                    <a href="https://kpi.ua/"><img src="http://pzks.fpm.kpi.ua/images/2020/kpi.jpg"></a>
+                    <a href="http://fpm.kpi.ua/"><img src="http://pzks.fpm.kpi.ua/images/2020/fpm.png"></a>
+                    <a href="https://www.facebook.com/pzksfpmkpi/"><img src="http://pzks.fpm.kpi.ua/images/2020/pzks.png"></a>
+                {% endblock %}
+            </div>
+                <div class="col-sm-10 ">{% block content %}{% endblock %}
+                    {% block pagination %}
+                      {% if is_paginated %}
+                          <div class="pagination">
+                              <span class="page-links">
+                                  {% if page_obj.has_previous %}
+                                      <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Попередня</a>
+                                  {% endif %}
+                                  <span class="page-current">
+                                      Сторінка № {{ page_obj.number }} з {{ page_obj.paginator.num_pages }}.
+                                  </span>
+                                  {% if page_obj.has_next %}
+                                      <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Наступна</a>
+                                  {% endif %}
+                              </span>
+                          </div>
+                      {% endif %}
+                    {% endblock %}
+                </div>
+        </div>
+    </div>
+</body>
+</html>

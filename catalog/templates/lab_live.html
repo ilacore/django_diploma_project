@@ -1,0 +1,11 @@
+{% extends "starter_template.html" %}
+{% block title %}<title>LabLive</title>{% endblock%}
+{% load embed_video_tags %}
+{% block content %}
+  <h1 position="center">Lab Live</h1>
+  <div id="lablive" class="container-fluid">
+      {% for i in obj %}
+        {% video i.video 'small' %}
+    {% endfor %}
+  </div>
+{% endblock %}

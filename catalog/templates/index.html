@@ -1,0 +1,39 @@
+{% extends "starter_template.html" %}
+
+{% block content %}
+    <section class="u-align-center u-clearfix u-palette-1-base u-section-1" id="carousel_ecc1">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-shape u-shape-svg u-text-white u-shape-1">
+          <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 100" style=""><use xlink:href="#svg-3562"></use></svg>
+          <svg class="u-svg-content" viewBox="0 0 160 100" x="0px" y="0px" id="svg-3562"><path d="M133,27.2c-13.9,9.9-25.8,9.9-39.8,0c-9.1-6.4-16.8-6.4-25.9,0c-13.8,9.8-25.1,9.8-38.9,0c-9.2-6.5-15.4-6.5-24.6,0L0,22.4
+	c11.2-8,20.6-8.3,32.2,0c11,7.8,19,8.7,31.3,0c11.6-8.3,22.4-7.9,33.5,0c11.4,8.2,20.3,8.5,32.2,0c11.6-8.3,19.2-8.3,30.8,0
+	l-3.8,4.8C146.9,20.6,142.3,20.6,133,27.2z M133,11c-13.9,9.9-25.8,9.9-39.8,0c-9.1-6.4-16.8-6.4-25.9,0c-13.8,9.8-25.1,9.8-38.9,0
+	C19.2,4.5,13,4.5,3.8,11L0,6.2c11.2-8,20.6-8.3,32.2,0c11,7.8,19,8.7,31.3,0c11.6-8.3,22.4-7.9,33.5,0c11.4,8.2,20.3,8.5,32.2,0
+	c11.6-8.3,19.2-8.3,30.8,0l-3.8,4.8C146.9,4.4,142.3,4.4,133,11z M32.2,38.8c11,7.8,19,8.7,31.3,0c11.6-8.3,22.4-7.9,33.5,0
+	c11.4,8.2,20.3,8.5,32.2,0c11.6-8.3,19.2-8.3,30.8,0l-3.8,4.8c-9.3-6.6-13.9-6.6-23.3,0c-13.9,9.9-25.8,9.9-39.8,0
+	c-9.1-6.4-16.8-6.4-25.9,0c-13.8,9.8-25.1,9.8-38.9,0c-9.2-6.5-15.4-6.5-24.6,0L0,38.8C11.2,30.8,20.6,30.5,32.2,38.8z M133,76.2
+	c-13.9,9.9-25.8,9.9-39.8,0c-9.1-6.4-16.8-6.4-25.9,0c-13.8,9.8-25.1,9.8-38.9,0c-9.2-6.5-15.4-6.5-24.6,0L0,71.4
+	c11.2-8,20.6-8.3,32.2,0c11,7.8,19,8.7,31.3,0c11.6-8.3,22.4-7.9,33.5,0c11.4,8.2,20.3,8.5,32.2,0c11.6-8.3,19.2-8.3,30.8,0
+	l-3.8,4.8C146.9,69.6,142.3,69.6,133,76.2z M133,60c-13.9,9.9-25.8,9.9-39.8,0c-9.1-6.4-16.8-6.4-25.9,0c-13.8,9.8-25.1,9.8-38.9,0
+	c-9.2-6.5-15.4-6.5-24.6,0L0,55.2c11.2-8,20.6-8.3,32.2,0c11,7.8,19,8.7,31.3,0c11.6-8.3,22.4-7.9,33.5,0c11.4,8.2,20.3,8.5,32.2,0
+	c11.6-8.3,19.2-8.3,30.8,0l-3.8,4.8C146.9,53.4,142.3,53.4,133,60z M32.2,87.8c11,7.8,19,8.7,31.3,0c11.6-8.3,22.4-7.9,33.5,0
+	c11.4,8.2,20.3,8.5,32.2,0c11.6-8.3,19.2-8.3,30.8,0l-3.8,4.8c-9.3-6.6-13.9-6.6-23.3,0c-13.9,9.9-25.8,9.9-39.8,0
+	c-9.1-6.4-16.8-6.4-25.9,0c-13.8,9.8-25.1,9.8-38.9,0c-9.2-6.5-15.4-6.5-24.6,0L0,87.8C11.2,79.8,20.6,79.5,32.2,87.8z"></path></svg>
+        </div>
+        <h1 class="u-custom-font u-font-merriweather u-text u-text-body-alt-color u-text-1">Навчально-наукова лабораторія мультимедіа, мульсемедіа та імерсійних технологій<br>
+        </h1>
+        {% if not user.is_authenticated %}
+        <a href="{% url 'accounts:login' %}" class="u-active-white u-border-2 u-border-white u-btn u-button-style u-color-scheme-summer-time u-color-style-multicolor-1 u-hover-white u-none u-text-active-palette-1-dark-3 u-text-body-alt-color u-text-hover-palette-1-dark-3 u-btn-1">ЛОГІН</a>
+        <a href="{% url 'accounts:signup' %}" class="u-active-white u-border-2 u-border-white u-btn u-button-style u-color-scheme-summer-time u-color-style-multicolor-1 u-hover-white u-none u-text-active-palette-1-dark-3 u-text-body-alt-color u-text-hover-palette-1-dark-3 u-btn-1">РЕЄСТРАЦІЯ</a>
+        {% else %}
+        <hr>
+        <br>
+        <br>
+        <form action="{% url 'accounts:logout' %}" method="post">
+          {% csrf_token %}
+          <button id="logout_button" class="btn btn-primary btn-sm" type="submit">Log Out</button>
+        </form>
+        {% endif %}
+      </div>
+    </section>
+{% endblock %}
